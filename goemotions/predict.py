@@ -82,7 +82,7 @@ def predict(sentence):
     return {'predicted_label': predicted_label, 'confidence': confidence}
 
 def main():
-    sentence = "Today is an terrible day."
+    sentence = "Today is a terrible day."
 
     print(predict(sentence))
 

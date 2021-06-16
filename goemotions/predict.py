@@ -5,13 +5,13 @@ import json
 import pandas as pd
 
 tokenization = run_classifier.tokenization
-model_base_path = './model' #modify accordingly
-init_checkpoint = os.path.join(model_base_path, 'model.ckpt')
-bert_config_file = os.path.join(model_base_path, 'bert_config.json')
-vocab_file = os.path.join(model_base_path, 'vocab.txt')
+model_base_path = 'model' #modify accordingly
+init_checkpoint = os.path.sep.join([os.path.dirname(os.path.realpath(__file__)), model_base_path, 'model.ckpt'])
+bert_config_file = os.path.sep.join([os.path.dirname(os.path.realpath(__file__)), model_base_path, 'bert_config.json'])
+vocab_file = os.path.sep.join([os.path.dirname(os.path.realpath(__file__)), model_base_path, 'vocab.txt'])
 processor = run_classifier.ColaProcessor()
 label_list = processor.get_labels()
-emotions_file = 'emotions.txt'
+emotions_file = os.path.sep.join([os.path.dirname(os.path.realpath(__file__)), 'emotions.txt'])
 
 #since the original bert source code combines train, eval and predict in one single configuration,
 #we need to feed such data during initialization, can be anything as it is needed for run configuration
@@ -79,7 +79,7 @@ def predict(sentence):
     confidence = df.iat[0,0].max()
     predicted_label = emotions.iat[int(label_index), 0]
 
-    return {'predicted_label': predicted_label, 'confidence': confidence}
+    return {'predicted_label': predicted_label, 'confidence': confidence.item()}
 
 def main():
     sentence = "Today is a terrible day."

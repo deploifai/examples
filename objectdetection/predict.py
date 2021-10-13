@@ -4,6 +4,7 @@ import operator
 import base64
 import numpy as np
 import cv2
+import json
 
 def predict(img):
   weights = os.path.sep.join([os.path.dirname(os.path.realpath(__file__)), "yolov4.weights"])
@@ -47,7 +48,7 @@ def predict(img):
         # Shall figure out soon and write a justification here.
         boxes.append([x, y, int(width), int(height)])
         confidences.append(float(confidence))
-        class_ids.append(class_id)
+        class_ids.append(int(class_id))
 
   indexes = cv2.dnn.NMSBoxes(boxes, confidences, confidence_threshold, nms_threshold)
   if len(indexes) > 0:
@@ -55,7 +56,7 @@ def predict(img):
     boxes = list(map(lambda idx: boxes[idx], indexes))
     confidences = list(map(lambda idx: confidences[idx], indexes))
     class_ids = list(map(lambda idx: class_ids[idx], indexes))
-  return [[boxes, confidences, class_ids], 3]
+  return {"bboxes": boxes, "confidences": confidences, "classes": class_ids}
 
 
 if __name__ == "__main__":
@@ -64,25 +65,3 @@ if __name__ == "__main__":
   base64image = base64.b64encode(buffer).decode('utf-8')
   res = predict([base64image])
   print(res)
-  detector_result = list(zip(res[0][0], res[0][1], res[0][2]))
-  for box in detector_result:
-    bbox = box[0]
-    label = str(box[2])
-    x = bbox[0]
-    y = bbox[1]
-    w = bbox[2]
-    h = bbox[3]
-    cv2.rectangle(img=img,
-                  pt1=(x, y),
-                  pt2=(x + w, y + h),
-                  color=(36, 255, 12),
-                  thickness=2)
-    cv2.putText(img=img,
-                text=label,
-                org=(x, y - 30),
-                fontFace=cv2.FONT_HERSHEY_COMPLEX,
-                fontScale=0.7,
-                color=(36, 255, 12),
-                thickness=2)
-  cv2.imshow("img", img)
-  cv2.waitKey(0)

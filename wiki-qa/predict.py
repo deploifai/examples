@@ -57,9 +57,8 @@ if model_name == 'nq-distilbert-base-v1':
 else:  # Here, we compute the corpus_embeddings from scratch (which can take a while depending on the GPU)
     corpus_embeddings = bi_encoder.encode(passages, convert_to_tensor=True, show_progress_bar=True)
 
-while True:
-    query = input("Please enter a question: ")
 
+def predict(query):
     # Encode the query using the bi-encoder and find potentially relevant passages
     start_time = time.time()
     question_embedding = bi_encoder.encode(query, convert_to_tensor=True)
@@ -71,7 +70,23 @@ while True:
     # Output of top-k hits
     print("Input question:", query)
     print("Results (after {:.3f} seconds):".format(end_time - start_time))
+
+    results = [
+        {
+            'score': hit['score'],
+            'title': passages[hit['corpus_id']][0],
+            'text': passages[hit['corpus_id']][1]
+        }
+        for hit in hits
+    ]
+
     for hit in hits:
         print("\t{:.3f}\t{}".format(hit['score'], passages[hit['corpus_id']]))
 
     print("\n\n========\n")
+
+    return results
+
+
+if __name__ == "__main__":
+    predict("What is the capital of Germany?")

@@ -19,6 +19,8 @@ import gzip
 import os
 import torch
 
+base_directory = os.path.dirname(os.path.realpath(__file__))
+
 # We use the Bi-Encoder to encode all passages, so that we can use it with sematic search
 model_name = 'nq-distilbert-base-v1'
 bi_encoder = SentenceTransformer(model_name)
@@ -27,7 +29,7 @@ top_k = 5  # Number of passages we want to retrieve with the bi-encoder
 # As dataset, we use Simple English Wikipedia. Compared to the full English wikipedia, it has only
 # about 170k articles. We split these articles into paragraphs and encode them with the bi-encoder
 
-wikipedia_filepath = 'data/simplewiki-2020-11-01.jsonl.gz'
+wikipedia_filepath = os.path.join(base_directory, 'data/simplewiki-2020-11-01.jsonl.gz')
 
 if not os.path.exists(wikipedia_filepath):
     util.http_get('http://sbert.net/datasets/simplewiki-2020-11-01.jsonl.gz', wikipedia_filepath)
@@ -46,7 +48,7 @@ print("Passages:", len(passages))
 # To speed things up, pre-computed embeddings are downloaded.
 # The provided file encoded the passages with the model 'nq-distilbert-base-v1'
 if model_name == 'nq-distilbert-base-v1':
-    embeddings_filepath = 'simplewiki-2020-11-01-nq-distilbert-base-v1.pt'
+    embeddings_filepath = os.path.join(base_directory, 'simplewiki-2020-11-01-nq-distilbert-base-v1.pt')
     if not os.path.exists(embeddings_filepath):
         util.http_get('http://sbert.net/datasets/simplewiki-2020-11-01-nq-distilbert-base-v1.pt', embeddings_filepath)
 

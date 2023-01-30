@@ -1,20 +1,17 @@
 FROM pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime
 
+ENV PORT=8000
+
+RUN pip install sentence-transformers fastapi uvicorn
+
 WORKDIR /model
 
-COPY . .
-
-RUN pip install sentence-transformers
+COPY init.py .
 
 RUN python init.py
 
+COPY . .
 
-WORKDIR /container
+RUN chmod +x ./entrypoint.sh
 
-COPY oML .
-
-RUN pip install -r requirements.txt
-
-RUN chmod +x /container/entrypoint.sh
-
-ENTRYPOINT [ "/container/entrypoint.sh" ]
+ENTRYPOINT [ "/model/entrypoint.sh" ]

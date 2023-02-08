@@ -2,7 +2,7 @@ FROM pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime
 
 ENV PORT=8000
 
-RUN pip install sentence-transformers fastapi uvicorn
+RUN pip install sentence-transformers fastapi uvicorn gradio
 
 WORKDIR /model
 

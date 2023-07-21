@@ -1,0 +1,8 @@
+scikit-learn
+gradio
+numpy
+pickleshare
+nltk
+re
+emoji
+regex

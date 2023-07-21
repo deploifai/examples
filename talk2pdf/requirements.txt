@@ -1,0 +1,4 @@
+langchain
+PyPDF2
+streamlit
+tiktoken

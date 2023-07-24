@@ -11,9 +11,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code to the working directory
-COPY test.py .
+COPY app.py .
 COPY vectorizer.pkl .
 COPY model.pkl .
 
 # Set the default command to run when the container starts
-CMD [ "python", "test.py" ]
+CMD [ "python", "app.py" ]

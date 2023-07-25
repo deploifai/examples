@@ -1,3 +1,4 @@
+#importing all the packages
 import sklearn
 import pickle
 import numpy as np
@@ -12,10 +13,11 @@ import emoji
 import string
 from nltk.corpus import stopwords
 
-
+#loading the vectorizer and pre-trained model
 vect = pickle.load(open("vectorizer.pkl", "rb"))
 model = pickle.load(open("model.pkl", "rb"))
 
+#lemmatize the word
 def lemmatize(text):
     tokenized = nltk.word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
@@ -48,7 +50,7 @@ def clean_hashtags(tweet):
     updated_tweet2 = " ".join(word.strip() for word in re.split('#|_', new_tweet))
     return updated_tweet2
   
-  
+#remove emojis
 def remove_emoji(text):
   return emoji.replace_emoji(text, "")
 
@@ -93,13 +95,17 @@ def preprocess(text: str)->str:
     text = lemmatize(text)
     return text
 
-
+#final function to get the prediction
 def conversion(user_input: str)->str:
+  
+  #process the input text given by the user
   user_input=[preprocess(user_input)]
   
+  #vectorize and predict the user input
   words = vect.transform(user_input)
   result = model.predict(words)
   
+  #retrieve the results
   if result == np.array([1]):
     return("Our model predicts the tweet to be RELIGION based cyberbullying")
   elif result == np.array([2]):
@@ -113,7 +119,8 @@ def conversion(user_input: str)->str:
   elif result == np.array([6]):
       return("Our model predicts the tweet to be NOT CYBERBULLYING")
       
-      
+
+#get the gradio interface       
 demo=gr.Interface(fn=conversion,inputs=gr.Textbox(
         label="Input", placeholder="Type your cyberbullying tweet"
     ), outputs=gr.Textbox(label="Prediction"), 

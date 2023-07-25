@@ -47,12 +47,12 @@ On your terminal, you can pull the Docker image using the command:
 docker pull deploifai/safetweet
 ```
 
- and to run the Docker image, use the command:
+and to run the Docker image, use the command:
  ```shell
  docker run -it --rm -p 7860:7860 deploifai/safetweet
  ```
  
- After running the Docker image, the Safe Tweet script can be accessed on the local host with the port 7860.
+After running the Docker image, the Safe Tweet script can be accessed on the local host with the port 7860.
 
  ```shell
  http://localhost:7860/

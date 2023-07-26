@@ -20,7 +20,7 @@ def main():
     st.write('This app predicts the selling price of a car based on its features.')
     
     # Create input fields for the car features
-    present_price = st.number_input('Present Price (in lakhs)', min_value=0.0, max_value=100.0, step=0.1)
+    present_price = st.number_input('Present Price', min_value=0, max_value=5000000, step=10000)
     kms_driven = st.number_input('Kilometers Driven', min_value=0, max_value=1000000, step=1000)
     owner = st.selectbox('Number of Previous Owners', [0, 1, 2, 3])
     age = st.number_input('Age of Car (in years)', min_value=0, max_value=50, step=1)
@@ -32,7 +32,7 @@ def main():
     # Create a button for making the prediction
     if st.button('Predict Selling Price'):
         # Create a dictionary with the input features
-        features = {'Present_Price': present_price,
+        features = {'Present_Price': present_price/100000,
                     'Kms_Driven': kms_driven,
                     'Owner': owner,
                     'Age': age,

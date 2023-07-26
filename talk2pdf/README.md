@@ -38,6 +38,7 @@ docker build -t app .
  ```shell
  http://localhost:8051/
  ```
+docker pull deploifai/talk-2-pdf
 
 ### Note
 

@@ -6,7 +6,10 @@ The Python script `app.py` is a Streamlit app that allows users to upload PDF fi
 
 The following Python libraries are required to run this script:
 
-- langchain, PyPDF2, streamlit, tiktoken
+- `langchain==0.0.238`
+- `PyPDF2==3.0.1`
+- `streamlit==1.25.0`
+- `tiktoken==0.4.0`
 
 
 ### Usage
@@ -22,23 +25,23 @@ The script requires a `htmlTemplates.py` file for formatting and a `requirements
 
 For the deployment of this script, a Docker image was created that includes all the necessary dependencies and files, with the Dockerfile specifying the base image and installation of the required Python libraries through pip, as well as the copying of the script and other files into the Docker image. 
 
-On your terminal after arriving in this directory, you can build your Docker image using the command:
 
 ```shell
-docker build -t app .
+docker pull deploifai/talk-2-pdf
 ```
 
  and to run the Docker image, use the command:
  ```shell
- docker run -it --rm -p 8501:8501 app
+ docker run -it --rm -p 8501:8501 deploifai/talk-2-pdf
  ```
  
- After running the Docker image, the python script can be accessed on the local host with the port 8501.
+ After running the Docker image, the python script can be accessed on the local 
+ host with the port `8501`.
 
  ```shell
- http://localhost:8051/
+ http://localhost:8501/
  ```
-docker pull deploifai/talk-2-pdf
+
 
 ### Note
 

@@ -1,7 +1,7 @@
 
 ## Car Selling Price Prediction App
 
-This is a Streamlit app that predicts the selling price of a car based on its features. The app uses a random forest regression model that was trained on a dataset of car sales records. The data is taken from [Kaggle](https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho) and is based on the indian car selling market. 
+This is a Streamlit app that predicts the selling price of a car based on its features. The app uses a random forest regression model that was trained on a dataset of car sales records. The data is taken from [Kaggle](https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho) and is based on the indian car selling market. The creation process of the model can be found in the `main.ipynb` file.
 
 ## Dependencies
 

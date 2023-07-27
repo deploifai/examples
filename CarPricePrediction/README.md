@@ -16,16 +16,8 @@ The following Python libraries are required to run this script:
 
 ### Files Required
 
-The python script requires a pickle file to be saved in the same directory: `model.pkl` and a `requirements.txt` file that includes the name and versions of all the packages used. The pickle files contains the Random Forest Regressor model, which is loaded into the script using the pickle library. 
+The python script requires a pickle file to be saved in the same directory: `RandomForestRegressor.pkl` and a `requirements.txt` file that includes the name and versions of all the packages used. The pickle file contains the Random Forest Regressor model, which is loaded into the script using the pickle library. 
 
-<!-- ## Usage
-
-To run the app, simply run the `app.py` script using the following command:
-
-```shell
- streamlit run app.py --server.address="0.0.0.0"
-```
- -->
 
 ### Deploying the model 
 

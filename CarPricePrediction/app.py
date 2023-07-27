@@ -11,7 +11,7 @@ def predict_selling_price(features):
     df = pd.DataFrame(features, index=[0])
     # Make the prediction using the pre-trained model
     prediction = model.predict(df)[0]
-    return prediction
+    return prediction*100000
 
 # Define the Streamlit app
 def main():
@@ -20,7 +20,7 @@ def main():
     st.write('This app predicts the selling price of a car based on its features.')
     
     # Create input fields for the car features
-    present_price = st.number_input('Present Price', min_value=0, max_value=5000000, step=10000)
+    present_price = st.number_input('Present Price in Indian Rupees', min_value=0, max_value=5000000, step=10000)
     kms_driven = st.number_input('Kilometers Driven', min_value=0, max_value=1000000, step=1000)
     owner = st.selectbox('Number of Previous Owners', [0, 1, 2, 3])
     age = st.number_input('Age of Car (in years)', min_value=0, max_value=50, step=1)
@@ -43,7 +43,7 @@ def main():
         # Make the prediction using the predict_selling_price function
         prediction = predict_selling_price(features)
         # Display the predicted selling price
-        st.write(f'The predicted selling price is {prediction:.2f} lakhs.')
+        st.write(f'The predicted selling price is {prediction: .2f} .')
 
 # Run the Streamlit app
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 # SPAM SMS CLASSIFIER
 
-This is a spam SMS classifier that uses a  machine learning model to detect whether a user input string is a spam SMS or not. The model is built using the scikit-learn machine learning library, specifically using the Naive Bayes algorithm and is trained on a dataset of 5572 text messages collected by the [UCI Machine Learning Repository
+This is a spam SMS classifier that uses a machine learning model to detect whether a user input string is a spam SMS or not. The model is built using the scikit-learn machine learning library, specifically using the Naive Bayes algorithm and is trained on a dataset of 5572 text messages collected by the [UCI Machine Learning Repository
 (Almeida & Hidalgo, 2012)](https://archive.ics.uci.edu/dataset/228/sms+spam+collection).
 
 
@@ -24,6 +24,9 @@ The `model.pkl` file contains the machine learning model, which is loaded into m
 ## Usage
 
 To use the spam SMS classifier, run the script and launch the `gradio` interface. by running the following command:
+```shell
+python app.py
+```
 
 The interface will prompt you to type your SMS text in the input textbox. Once you submit your input, the model will predict whether the text is a spam SMS or not and return a corresponding message in the output textbox.
 

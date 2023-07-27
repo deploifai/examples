@@ -11,6 +11,8 @@ from langchain.text_splitter import CharacterTextSplitter
 from htmlTemplates import css, bot_template, user_template
 import streamlit as st 
 from PyPDF2 import PdfReader
+from dotenv import load_dotenv
+
 
 
 def retrieve_pdf_text(pdf_files):
@@ -65,6 +67,8 @@ def user_input_handler(user_question):
 
 
 def main():
+  
+    load_dotenv()
 
     st.set_page_config(page_title="Chat with multiple PDFs",
                        page_icon=":books:")

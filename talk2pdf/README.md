@@ -10,6 +10,11 @@ The following Python libraries are required to run this script:
 - `PyPDF2==3.0.1`
 - `streamlit==1.25.0`
 - `tiktoken==0.4.0`
+- `langsmith==0.0.12`
+- `python-dotenv==1.0.0`
+- `openai==0.27.8`
+- `openapi-schema-pydantic==1.2.4`
+- `faiss-cpu==1.7.4`
 
 
 ### Usage
@@ -23,20 +28,20 @@ The script requires a `htmlTemplates.py` file for formatting and a `requirements
 
 ### Deployment
 
-For the deployment of this script, a Docker image was created that includes all the necessary dependencies and files, with the Dockerfile specifying the base image and installation of the required Python libraries through pip, as well as the copying of the script and other files into the Docker image. 
+For the deployment of this script, a Docker image is created that includes all the necessary dependencies and files, with the Dockerfile specifying the base image and installation of the required Python libraries through pip, as well as the copying of the script and other files into the Docker image. 
 
 
 ```shell
 docker pull deploifai/talk-2-pdf
 ```
 
- and to run the Docker image, use the command:
+and to run the Docker image, use the command:
  ```shell
- docker run -it --rm -p 8501:8501 deploifai/talk-2-pdf
+ docker run -it --env-file ./.env -p 8501:8501 talk-2-pdf
  ```
- 
- After running the Docker image, the python script can be accessed on the local 
- host with the port `8501`.
+
+After running the Docker image, the python script can be accessed on the local 
+host with the port `8501`.
 
  ```shell
  http://localhost:8501/
@@ -45,7 +50,7 @@ docker pull deploifai/talk-2-pdf
 
 ### Note
 
-The app uses the OpenAI API to generate responses to user questions. Users will need to sign up for an OpenAI API key to use this feature and store it in an `env` file in the same directory.
+The app uses the OpenAI API to generate responses to user questions. Users will need to sign up for an OpenAI API key to use this feature and store it in a `.env` file in the same directory.
 
 
 

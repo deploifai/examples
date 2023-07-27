@@ -52,7 +52,7 @@ and to run the Docker image, use the command:
  docker run -it --rm -p 7860:7860 deploifai/safetweet
  ```
  
-After running the Docker image, the Safe Tweet script can be accessed on the local host with the port 7860.
+After running the Docker image, the Gradio web interface can be accessed on the local host with the port `7860`.
 
  ```shell
  http://localhost:7860/

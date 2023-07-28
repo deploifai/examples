@@ -1,6 +1,6 @@
 # Diabetes Classifier using KNN
 
-This is a simple diabetes classifier built using the K-Nearest Neighbors (KNN) algorithm. The classifier is implemented as a Streamlit app, which allows users to input their medical information and find out whether they have diabetes or not. The data is taken from [Kaggle↗](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database).
+This is a simple diabetes classifier built using the K-Nearest Neighbors (KNN) algorithm. The classifier is implemented as a Streamlit app, which allows users to input their medical information and find out whether they have diabetes or not. The data is taken from [Kaggle↗](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database). The model creation process can be found in `main.ipynb` file.
 
 
 ## Dependencies
@@ -32,7 +32,7 @@ Using this information, the app makes a prediction on whether the user has diabe
 
 ### Deploying the model 
 
-For the deployment of this script, a Docker image is created that includes all the necessary dependencies and files, with the Dockerfile specifying the base image and installation of the required Python libraries through pip, as well as the copying of the script and pickle files into the Docker image. 
+For the deployment of this script, a Docker image is created that includes all the necessary dependencies and files, with the Dockerfile specifying the base image and installation of the required Python libraries through pip, as well as the copying of the script and the pickle file into the Docker image. 
 
 On your terminal, you can pull the Docker image using the command:
 ```shell

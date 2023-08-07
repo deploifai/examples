@@ -40,7 +40,7 @@ The `app.py` script includes a Gradio web interface for easy testing of the clas
 
 ### Deploying the model 
 
-For the deployment of this script, a Docker is created that includes all the necessary dependencies and files, with the Dockerfile specifying the base image and installation of the required Python libraries through pip, as well as the copying of the script and pickle files into the Docker image. 
+For the deployment of this script, a Docker image is created that includes all the necessary dependencies and files, with the Dockerfile specifying the base image and installation of the required Python libraries through pip, as well as the copying of the script and pickle files into the Docker image. 
 
 On your terminal, you can pull the Docker image using the command:
 ```shell

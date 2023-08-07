@@ -7,13 +7,13 @@ The Python script `app.py` provides a preprocessing and classification model for
 
 The following Python libraries are required to run this script:
 
-- scikit-learn==1.3.0
-- pickleshare==0.7.5
-- numpy==1.25.1
-- gradio==3.37.0
-- nltk==3.8.1
-- regex==2023.6.3
-- emoji==2.6.0
+- `scikit-learn==1.3.0`
+- `pickleshare==0.7.5`
+- `numpy==1.25.1`
+- `gradio==3.37.0`
+- `nltk==3.8.1`
+- `regex==2023.6.3`
+- `emoji==2.6.0`
 
 
 ### Usage

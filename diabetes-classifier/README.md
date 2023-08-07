@@ -12,6 +12,7 @@ The following Python libraries are required to run this script:
 - `numpy==1.25.1`
 - `streamlit==1.25.0`
 - `pandas==2.0.3`
+- `scikit-learn==1.3.0`
 
 
 ## App Details

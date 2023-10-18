@@ -1,58 +1,104 @@
 # Email classification using SVM
 
-In this example, we create a machine learning project to classify emails as spam or not spam.
+Train a support vector machine (SVM) to classify emails as spam or not spam.
 
-The code also uses Deploifai to manage the training data and training servers.
+This is an example that uses Deploifai
+[datasets](https://docs.deploif.ai/cloud-services/datasets/overview),
+[training servers](https://docs.deploif.ai/cloud-services/training-servers/overview),
+and [experiments](https://docs.deploif.ai/cloud-services/experiments/overview).
 
-The dataset has been taken from [Kaggle](https://www.kaggle.com/balaka18/email-spam-classification-dataset-csv/)
+The following sections describe how to run this example yourself.
 
-## Initialise deploifai project
+## Prerequisites
 
-In the project directory, create a `data` directory that contains the dataset.
+Make sure to do the following before running this example:
 
-```
-mkdir data
-```
+- [Install the Deploifai CLI](https://docs.deploif.ai/cli/install)
+- [Create a cloud profile](https://docs.deploif.ai/cloud-services/connect-your-account) for a cloud provider of your choice
 
-Now you can initialise a Deploifai dataset using the CLI
+## Fork this repository
 
-```
-deploifai data init
-```
+Fork this repository to your own GitHub account.
+And clone it somewhere in your computer.
 
-Follow the commands and connect at least one container of the data storage to the `data` directory.
+## Create a project
 
+[Create a project](https://docs.deploif.ai/projects/quick-start#creating-a-project-in-the-dashboard)
+in the Deploifai dashboard.
 
+[Connect](https://docs.deploif.ai/projects/overview#how-to-connect-to-a-github-repository) the forked repository in your GitHub account to the project.
 
-https://user-images.githubusercontent.com/19630580/137169299-40f85376-8924-486a-841e-2b6cd7f5ed74.mp4
+[Initialize](https://docs.deploif.ai/cli/commands/project#initialize-a-project)
+the `examples` repository you just cloned as the project.
 
-
-
-## Upload dataset to the data storage
-
-Once the set up has been completed, upload the data using:
-
-```
-deploifai data push
-```
-
-## Run training on the repo
-
-Create a training server on Deploifai using the [dashboard](https://deploif.ai).
-
-Login to the server using the given instructions and then clone this repo on the server.
-
-```
-git clone https://github.com/deploifai/examples
+```shell
+cd examples
+deploifai project init
 ```
 
-Make the change to the `data` variable in the notebook to the right path. You can find the path at the bottom in the dashboard page for the training server.
+## Create a dataset
 
-You can run the notebook! Watch the video below to see all the steps in action.
+[Create a dataset](https://docs.deploif.ai/cloud-services/datasets/quick-start#creating-a-dataset)
+named `dataset` in the new project you created.
 
+Download the `emails.csv` file from this 
+[Kaggle dataset](https://www.kaggle.com/balaka18/email-spam-classification-dataset-csv/)
+into the `svm/dataset` directory.
 
-https://user-images.githubusercontent.com/19630580/137170053-bbc37b56-8201-47e9-82d6-7a831f560cbf.mp4
+[Initialize](https://docs.deploif.ai/cli/commands/dataset#initialize-a-dataset)
+the dataset directory to mirror the dataset you created.
 
+```shell
+cd svm/dataset
+deploifai dataset init -n dataset
+```
+
+[Push](https://docs.deploif.ai/cli/commands/dataset#upload-a-dataset)
+the local `dataset` directory to the `dataset` on the cloud.
+
+```shell
+deploifai dataset push
+```
+
+## Create an experiment with a managed runner
+
+[Create an experiment](https://docs.deploif.ai/cloud-services/experiments/quick-start/managed-runner#creating-an-experiment)
+that runs on a managed runner.
+
+1. Add the `dataset` that has been created
+2. Setup the training server with a `MEDIUM CPU` instance size
+3. Setup the experiment configuration according to the following:
+
+   - pip requirements file: `svm/requirements.txt`
+   - entrypoint shell script: `svm/experiment.sh`
+   - artifacts directory: `svm/artifacts`
+
+## Run the jupyter notebook
+
+[Connect](https://docs.deploif.ai/cloud-services/training-servers/quick-start#connecting-to-the-training-server)
+to the training server that has been created for the experiment.
+
+Clone the forked repository to the training server.
+
+Open the `training.ipynb` notebook and run the cells.
+
+The notebook expects the dataset to be at `~/data/dataset` for which the `emails.csv` file is located at `~/data/dataset/emails.csv`.
+And the artifacts directory to be located at `svm/artifacts` relative to the cloned repository.
+
+## Run the experiment
+
+The experiment runs the `experiment.sh` script which runs the `training.ipynb` notebook.
+
+It will generate a `metrics.json` file and the model is saved as `model.pkl` in the artifacts directory.
+These can be downloaded after the experiment run has finished.
+
+## Clean up
+
+Delete the following resources used in this example from the Deploifai dashboard.
+
+- dataset
+- training server
+- experiment
 
 ## References
 

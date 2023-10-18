@@ -4,7 +4,6 @@ import operator
 import base64
 import numpy as np
 import cv2
-import json
 
 def predict(img):
   weights = os.path.sep.join([os.path.dirname(os.path.realpath(__file__)), "yolov4.weights"])

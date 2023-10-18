@@ -1,3 +1,2 @@
-data/
-.deploifai
-.venv/
+dataset/
+artifacts/

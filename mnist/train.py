@@ -22,12 +22,13 @@ model.fit(x_train, y_train, epochs=20)
 evaluation = model.evaluate(x_test, y_test, verbose=2)
 
 metrics = {
-    "evaluation": evaluation
+    "loss": evaluation[0],
+    "accuracy": evaluation[1],
 }
 
 print(metrics)
 
-artifacts_directory = os.environ.get("USER_EXPERIMENT_ARTIFACTS_PATH", "artifacts")
+artifacts_directory = "artifacts"
 with open(os.path.join(artifacts_directory, "metrics.json"), 'w') as metrics_file:
     json.dump(metrics, metrics_file, indent=2)
 

@@ -2,7 +2,7 @@
 FROM python:3.10-slim
 
 # Set the working directory
-WORKDIR /SpamDetection
+WORKDIR /spam-sms-classifier
 
 # Copy the requirements file to the working directory
 COPY requirements.txt .

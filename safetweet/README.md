@@ -1,4 +1,6 @@
-## Safe Tweet - Deploying an ML Model to Classify Cyberbullying Tweets
+## Safe Tweet 
+
+Deploying an ML model to classify cyberbullying tweets.
 
 The Python script `app.py` provides a preprocessing and classification model for cyberbullying tweets. It uses various NLP techniques to preprocess the input text and classify it into different types of cyberbullying. The model is built using the scikit-learn machine learning library, specifically using the Support Vector Machine (SVM) algorithm and is trained on a dataset of cyberbullying tweets. To provide an easy-to-use interface for users, the model is deployed using Gradio, a Python library that allows for the creation of customizable web interfaces.
 

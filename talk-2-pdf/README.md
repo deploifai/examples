@@ -1,4 +1,6 @@
-## PDF Chatbot - Extracting Information from Multiple PDFs
+## Talk 2 PDF
+
+Extract information from multiple PDF documents.
 
 The Python script `app.py` is a Streamlit app that allows users to upload PDF files and use the app as a chatbot to gain information about the documents. The app uses several libraries including `langchain` for language processing, `PyPDF2` for reading PDF files, and `streamlit` for creating the app interface.
 

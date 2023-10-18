@@ -2,7 +2,7 @@
 
 Based on [Wiki Question and Answer Retrieval](https://github.com/UKPLab/sentence-transformers/tree/master/examples/applications/semantic-search#question--answer-retrieval) example from [sentence-transformers](https://github.com/UKPLab/sentence-transformers), this example uses a model that was trained on the [Natural Questions dataset](https://ai.google.com/research/NaturalQuestions/). It consists of about 100k real Google search queries, together with an annotated passage from Wikipedia that provides the answer. It is an example of an asymmetric search task. As corpus, the smaller [Simple English Wikipedia](https://simple.wikipedia.org/wiki/Main_Page) was used so that it fits easily into memory.
 
-This is a deployment of this model.
+This example is a deployment of this model.
 
 ### Docker Image
 
@@ -12,7 +12,7 @@ Build this image:
 docker build -t wiki-qa .
 ```
 
-A publicly available image is also available on [Docker Hub]().
+A publicly available image is also available on [Docker Hub](https://hub.docker.com/r/deploifai/wiki-qa).
 
 
 ### Run

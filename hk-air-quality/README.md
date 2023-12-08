@@ -30,6 +30,11 @@ Because the 2 sets of data have different time granularities, they need to be co
 i.e. 1/1/2020 in the air quality dataset has a total of 24 rows of data for which each such row receives the same 1/1/2020 weather data.
 See [data.ipynb](data.ipynb) for details.
 
+The amount of data used to train the model is not too much, so it has been included in the [dataset](dataset) directory.
+- [air_hourly_1.csv](dataset/air_hourly_1.csv) contains raw data obtained from source
+- [weather.csv](dataset/weather.csv) contains raw data obtained from source
+- [processed.csv](dataset/processed.csv) contains the combined data from the 2 datasets
+
 ## Training a DNN model
 
 A simple deep neural network is designed.
@@ -37,5 +42,5 @@ Because temporal input (date and time) seems to have a large effect on the resul
 this set of input goes through a few network layers first before being combined with the weather inputs.
 In fact, the set of weather input also goes through a few network layers first.
 The combined neurons then go through another intermediate layer before finally emitting a singular output that is desired.
-See [model.ipynb](model.ipynb] for details.
+See [model.ipynb](model.ipynb) for details.
 

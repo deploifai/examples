@@ -9,6 +9,7 @@ The following table provides the list of examples, their descriptions, and the k
 |----------------------------------------------|----------------------------------------------------------------------------|:---:|:---:|:---:|:---:|
 | [car-price-prediction](car-price-prediction) | Predict the selling price of a car based on its features                   | ❌ | ❌ | ❌ | ✅ |
 | [diabetes-classifier](diabetes-classifier)   | Predict whether a person has diabetes or not based on their health metrics | ❌ | ✅ | ❌ | ✅ |
+| [hk-air-quality](hk-air-quality)             | Predict the air quality of Hong Kong given date, time, and weather         | ✅ | ✅ | ❌ | ❌ |
 | [mnist](mnist)                               | Train a model to classify handwritten digits from the MNIST dataset        | ❌ | ❌ | ✅ | ❌ |
 | [safetweet](safetweet)                       | Classify if a tweet contains cyberbullying elements                        | ❌ | ❌ | ❌ | ✅ |
 | [spam-sms-classifier](spam-sms-classifier)   | Classify if a text message is spam or not                                  | ❌ | ✅ | ❌ | ✅ |
